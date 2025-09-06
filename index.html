@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scratch-Style Blockly Toolbox</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Blockly CDN -->
+    <script src="https://unpkg.com/blockly@9.3.3/blockly.min.js"></script>
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="blocklyDiv" style="height: 100vh; width: 100%"></div>
+
+    <xml id="toolbox" style="display: none">
+      <category name="Basics" colour="#3b82f6">
+        <block type="doctype"></block>
+        <block type="html_tag"></block>
+        <block type="head_tag"></block>
+        <block type="title_tag"></block>
+        <block type="body_tag"></block>
+      </category>
+      <category name="Layout" colour="#10b981">
+        <block type="header"></block>
+        <block type="footer"></block>
+        <block type="nav"></block>
+        <block type="section"></block>
+        <block type="div"></block>
+        <block type="span"></block>
+        <block type="center"></block>
+        <block type="legend"></block>
+        <block type="main"></block>
+        <block type="article"></block>
+      </category>
+      <category name="Text" colour="#FFB347">
+        <block type="heading_block"></block>
+        <block type="paragraph"></block>
+        <block type="br"></block>
+        <block type="pre"></block>
+        <block type="hr"></block>
+        <block type="b"></block>
+        <block type="strong"></block>
+        <block type="i"></block>
+        <block type="em"></block>
+        <block type="u"></block>
+        <block type="mark"></block>
+        <block type="small"></block>
+        <block type="sub"></block>
+        <block type="sup"></block>
+        <block type="s"></block>
+        <block type="a"></block>
+      </category>
+
+      <category name="Lists" colour="#8b5cf6">
+        <block type="list_block"></block>
+        <block type="list_item"></block>
+        <block type="list_link"></block>
+      </category>
+
+      <category name="Media" colour="#ef4444">
+        <block type="video"></block>
+        <block type="audio"></block>
+        <block type="img"></block>
+        <block type="iframe"></block>
+      </category>
+      <category name="Forms" colour="#06b6d4">
+        <block type="form"></block>
+        <block type="form_input"></block>
+        <block type="label"></block>
+        <block type="textarea"></block>
+        <block type="select"></block>
+        <block type="option"></block>
+      </category>
+
+      <category name="Tables" colour="#84cc16">
+        <block type="table"></block>
+        <block type="caption"></block>
+        <block type="thead"></block>
+        <block type="tbody"></block>
+        <block type="tfoot"></block>
+        <block type="tr"></block>
+        <block type="th"></block>
+        <block type="td"></block>
+        <block type="colgroup"></block>
+        <block type="col"></block>
+      </category>
+
+      <category name="Style" expanded="false" colour="#7c3aed">
+        <category name="Selectors" colour="#7c3aed">
+          <block type="selector_id"></block>
+          <block type="selector_class"></block>
+          <block type="selector_multiple"></block>
+          <block type="selector_all"></block>
+          <block type="selector_attribute"></block>
+        </category>
+        <category name="Links" colour="#7c3aed">
+          <block type="a_link"></block>
+          <block type="a_visited"></block>
+          <block type="a_hover"></block>
+          <block type="a_active"></block>
+        </category>
+        <category name="Effects" colour="#7c3aed">
+          <block type="font_properties"></block>
+          <block type="text_appearance"></block>
+          <block type="text_spacing"></block>
+        </category>
+        <category name="Box" colour="#7c3aed">
+          <block type="box_dimensions"></block>
+          <block type="box_margin"></block>
+          <block type="box_padding"></block>
+        </category>
+        <category name="Border" colour="#7c3aed">
+          <block type="border_properties"></block>
+          <block type="outline_properties"></block>
+        </category>
+        <category name="BG" colour="#7c3aed">
+          <block type="background_properties"></block>
+          <block type="box_shadow"></block>
+          <block type="opacity_property"></block>
+        </category>
+        <category name="Position" colour="#7c3aed">
+          <block type="display_position"></block>
+          <block type="position_values"></block>
+        </category>
+      </category>
+
+      <category name="Scripts" colour="#dc2626">
+        <block type="script_tag"></block>
+      </category>
+      <category name="Events" colour="#ea580c">
+        <block type="on_click"></block>
+        <block type="on_hover"></block>
+        <block type="on_input"></block>
+        <block type="on_load"></block>
+        <block type="on_key_press"></block>
+      </category>
+    </xml>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

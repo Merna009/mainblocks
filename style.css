@@ -1,0 +1,287 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+#blocklyDiv {
+  width: 100%;
+  height: 100%;
+}
+
+/* Scratch-style toolbox */
+.blocklyToolboxDiv {
+  width: 120px !important;
+  background: #f5f5f5 !important;
+  padding: 10px 0 !important;
+  box-shadow: 1px 0 2px rgba(0,0,0,0.1) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Category containers */
+.blocklyTreeRow {
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;      /* ✅ */
+  align-items: center !important;      /* ✅ */
+  justify-content: flex-start !important; /* ✅ */
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 0.375rem 0px !important;
+  position: relative;
+  overflow: visible;
+  line-height: 0px !important;
+}
+
+
+.blocklyTreeRow:hover {
+  background-color: #b2afaf38 !important;
+}
+
+/* Hide default elements */
+.blocklyToolboxCategory { margin: 0 !important; padding: 0 !important; }
+.blocklyTreeIcon { display: none !important; }
+.blocklyTreeIconClosed, .blocklyTreeIconOpen { display: none !important; }
+
+/* Labels */
+.blocklyTreeLabel {
+  font-size: 0.65rem !important;
+  color: #333 !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  font-weight: normal !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Flyout */
+.blocklyFlyout {
+  background: #f5f5f5 !important;
+  border-left: 1px solid #e0e0e0 !important;
+}
+
+.blocklyScrollbarHorizontal, .blocklyScrollbarVertical {
+  display: none !important;
+}
+
+/* Custom circles */
+.scratch-circle {
+  width: 1.3rem !important;
+  height: 1.3rem !important;
+  margin: 8px auto !important;
+  border-radius: 50% !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.scratch-circle:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.scratch-circle.selected {
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.15) !important;
+}
+
+/* Custom scrollbar for the entire page with dynamic colors */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--page-scrollbar-color, linear-gradient(135deg, #cbd5e1, #94a3b8));
+  border-radius: 6px;
+  border: 2px solid #f8fafc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--page-scrollbar-hover-color, linear-gradient(135deg, #94a3b8, #64748b));
+}
+
+::-webkit-scrollbar-corner {
+  background: #f8fafc;
+}
+
+/* Custom scrollbar for Blockly toolbox with dynamic colors */
+.blocklyToolboxDiv::-webkit-scrollbar {
+  width: 10px;
+}
+
+.blocklyToolboxDiv::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 5px;
+}
+
+.blocklyToolboxDiv::-webkit-scrollbar-thumb {
+  background: var(--category-scrollbar-color, linear-gradient(135deg, #8b5cf6, #7c3aed));
+  border-radius: 5px;
+  border: 1px solid #f1f5f9;
+}
+
+.blocklyToolboxDiv::-webkit-scrollbar-thumb:hover {
+  background: var(--category-scrollbar-hover-color, linear-gradient(135deg, #7c3aed, #6d28d9));
+}
+
+/* Dynamic scrollbar colors for different categories */
+.blocklyToolboxDiv[data-active-category="Basics"] {
+  --category-scrollbar-color: linear-gradient(135deg, #3b82f6, #2563eb);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.blocklyToolboxDiv[data-active-category="Layout"] {
+  --category-scrollbar-color: linear-gradient(135deg, #10b981, #059669);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #059669, #047857);
+}
+
+.blocklyToolboxDiv[data-active-category="Text"] {
+  --category-scrollbar-color: linear-gradient(135deg, #f59e0b, #d97706);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #d97706, #b45309);
+}
+
+.blocklyToolboxDiv[data-active-category="Lists"] {
+  --category-scrollbar-color: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #7c3aed, #6d28d9);
+}
+
+.blocklyToolboxDiv[data-active-category="Media"] {
+  --category-scrollbar-color: linear-gradient(135deg, #ef4444, #dc2626);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.blocklyToolboxDiv[data-active-category="Forms"] {
+  --category-scrollbar-color: linear-gradient(135deg, #06b6d4, #0891b2);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.blocklyToolboxDiv[data-active-category="Tables"] {
+  --category-scrollbar-color: linear-gradient(135deg, #84cc16, #65a30d);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #65a30d, #4d7c0f);
+}
+
+.blocklyToolboxDiv[data-active-category="Style"] {
+  --category-scrollbar-color: linear-gradient(135deg, #7c3aed, #6d28d9);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #6d28d9, #5b21b6);
+}
+
+.blocklyToolboxDiv[data-active-category="Scripts"] {
+  --category-scrollbar-color: linear-gradient(135deg, #dc2626, #b91c1c);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #b91c1c, #991b1b);
+}
+
+.blocklyToolboxDiv[data-active-category="Events"] {
+  --category-scrollbar-color: linear-gradient(135deg, #ea580c, #c2410c);
+  --category-scrollbar-hover-color: linear-gradient(135deg, #c2410c, #9a3412);
+}
+
+/* Professional nested category styling */
+.blocklyToolboxCategory[data-category-name*="Style"] .blocklyTreeRow {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Main Style category */
+
+
+.blocklyToolboxCategory[data-category-name="Style"] > .blocklyTreeRow .blocklyTreeLabel {
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Nested Style subcategories */
+.blocklyToolboxCategory[data-category-name="Style"] .blocklyToolboxCategory .blocklyTreeRow {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  border-left: 3px solid #7c3aed;
+  margin: 1px 8px 1px 32px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+
+.blocklyToolboxCategory[data-category-name="Style"] .blocklyToolboxCategory .blocklyTreeLabel {
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+/* Enhanced category circles for Style */
+.blocklyToolboxCategory[data-category-name="Style"] .scratch-circle {
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.blocklyToolboxCategory[data-category-name="Style"] .blocklyToolboxCategory .scratch-circle {
+  box-shadow: 0 1px 4px rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+/* Professional indentation for nested categories */
+.blocklyToolboxCategory[data-category-name="Style"] .blocklyToolboxCategory {
+  margin-left: 20px;
+  border-left: 2px solid rgba(124, 58, 237, 0.2);
+  padding-left: 12px;
+  position: relative;
+}
+
+
+/* Enhanced spacing for better readability */
+.blocklyToolboxCategory[data-category-name="Style"] .blocklyToolboxCategory .blocklyTreeRow {
+  margin-bottom: 4px;
+  padding-left: 8px;
+}
+
+/* Additional visual separation for nested categories */
+.blocklyToolboxCategory[data-category-name="Style"] .blocklyToolboxCategory {
+  background: rgba(124, 58, 237, 0.02);
+  border-radius: 8px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  padding: 8px 4px;
+}
+
+
+
+.blocklyToolboxCategory[data-category-name="Style"] > .blocklyTreeRow .blocklyTreeLabel {
+  margin-left: 24px;
+}
+
+/* Smooth transitions for all category interactions */
+.blocklyTreeRow {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blocklyTreeRow:hover {
+  transform: translateX(1px);
+}
+
+/* Enhanced selection states */
+/* .blocklyTreeRow[aria-selected="true"] { */
+  /* background: linear-gradient(135deg, #dbeafe, #bfdbfe); */
+  /* border-radius: 6px; */
+  /* box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25); */
+/* } */
+
+.blocklyTreeRow[aria-selected="true"] .scratch-circle {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+

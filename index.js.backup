@@ -1,0 +1,1288 @@
+window.addEventListener("load", () => {
+    // HTML Heading block
+  Blockly.Blocks["doctype"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<!DOCTYPE html>");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#60a5fa");
+      this.setTooltip("HTML doctype declaration.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["html_tag"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<html>");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#60a5fa");
+      this.setTooltip("HTML root element.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["head_tag"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<head>");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#60a5fa");
+      this.setTooltip("Head section of the document.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["title_tag"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<title>");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#60a5fa");
+      this.setTooltip("Title of the page.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["body_tag"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<body>");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#60a5fa");
+      this.setTooltip("Body of the page.");
+      this.setHelpUrl("");
+    },
+  };
+// Layout blocks
+  Blockly.Blocks["header"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<header>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["footer"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<footer>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["nav"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<nav>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["section"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<section>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["div"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<div>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["span"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<span>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["center"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<center>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["legend"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<legend>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["main"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<main>");
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setColour(210);
+    },
+  };
+
+  Blockly.Blocks["heading_block"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Heading")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["h1", "h1"],
+            ["h2", "h2"],
+            ["h3", "h3"],
+            ["h4", "h4"],
+            ["h5", "h5"],
+            ["h6", "h6"],
+          ]),
+          "TAG"
+        );
+      this.appendDummyInput()
+        .appendField("Text")
+        .appendField(new Blockly.FieldTextInput("Hello World"), "CONTENT");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#f472b6");
+      this.setTooltip("Heading tag from h1 to h6");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["heading_block"] = function (block) {
+    var tag = block.getFieldValue("TAG");
+    var content = block.getFieldValue("CONTENT");
+    return `<${tag}>${content}</${tag}>\n`;
+  };
+
+  Blockly.Blocks["br"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<br>");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#f472b6");
+      this.setTooltip("Line break");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["br"] = function () {
+    return `<br>\n`;
+  };
+
+  Blockly.Blocks["paragraph"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Paragraph")
+        .appendField(new Blockly.FieldTextInput("Your text here"), "TEXT");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#f472b6");
+      this.setTooltip("Paragraph tag");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["paragraph"] = function (block) {
+    var text = block.getFieldValue("TEXT");
+    return `<p>${text}</p>\n`;
+  };
+
+  Blockly.Blocks["ul"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Unordered List (<ul>)");
+      this.appendStatementInput("ITEMS")
+        .setCheck(null)
+        .appendField("List Items");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#facc15");
+      this.setTooltip("Unordered list element <ul>");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["li"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("List Item (<li>)")
+        .appendField(new Blockly.FieldTextInput("Item text"), "TEXT");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#facc15");
+      this.setTooltip("List item <li>");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["a"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Link (<a>)")
+        .appendField("Text:")
+        .appendField(new Blockly.FieldTextInput("Click here"), "TEXT")
+        .appendField("URL:")
+        .appendField(new Blockly.FieldTextInput("https://example.com"), "HREF");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#facc15");
+      this.setTooltip("Hyperlink <a>");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["ol"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Ordered List (<ol>)");
+      this.appendStatementInput("ITEMS")
+        .setCheck(null)
+        .appendField("List Items");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#facc15");
+      this.setTooltip("Ordered list <ol>");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["dl"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Description List (<dl>)");
+      this.appendStatementInput("ITEMS")
+        .setCheck(null)
+        .appendField("Terms & Descriptions");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#facc15");
+      this.setTooltip("Description list <dl>");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["dt"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Term (<dt>)")
+        .appendField(new Blockly.FieldTextInput("Term"), "TERM");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#facc15");
+      this.setTooltip("Definition term <dt>");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["dd"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Description (<dd>)")
+        .appendField(new Blockly.FieldTextInput("Description"), "DESC");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#facc15");
+      this.setTooltip("Definition description <dd>");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["video"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Video Source")
+        .appendField(new Blockly.FieldTextInput("video.mp4"), "SRC");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#6ee7b7");
+      this.setTooltip("HTML5 video tag");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["video"] = function (block) {
+    const src = block.getFieldValue("SRC");
+    return `<video controls>\n  <source src="${src}" type="video/mp4">\n</video>\n`;
+  };
+
+  Blockly.Blocks["audio"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Audio Source")
+        .appendField(new Blockly.FieldTextInput("audio.mp3"), "SRC");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#6ee7b7");
+      this.setTooltip("HTML5 audio tag");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["audio"] = function (block) {
+    const src = block.getFieldValue("SRC");
+    return `<audio controls>\n  <source src="${src}" type="audio/mpeg">\n</audio>\n`;
+  };
+
+  Blockly.Blocks["img"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Image URL")
+        .appendField(new Blockly.FieldTextInput("image.jpg"), "SRC");
+      this.appendDummyInput()
+        .appendField("Alt Text")
+        .appendField(new Blockly.FieldTextInput("description"), "ALT");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#6ee7b7");
+      this.setTooltip("Image tag");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["img"] = function (block) {
+    const src = block.getFieldValue("SRC");
+    const alt = block.getFieldValue("ALT");
+    return `<img src="${src}" alt="${alt}">\n`;
+  };
+
+  Blockly.Blocks["form_input"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Input Type")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["text", "text"],
+            ["button", "button"],
+            ["checkbox", "checkbox"],
+            ["color", "color"],
+            ["date", "date"],
+            ["datetime-local", "datetime-local"],
+            ["email", "email"],
+            ["file", "file"],
+            ["hidden", "hidden"],
+            ["image", "image"],
+            ["month", "month"],
+            ["number", "number"],
+            ["password", "password"],
+            ["radio", "radio"],
+            ["range", "range"],
+            ["reset", "reset"],
+            ["search", "search"],
+            ["submit", "submit"],
+            ["tel", "tel"],
+            ["time", "time"],
+            ["url", "url"],
+            ["week", "week"],
+          ]),
+          "TYPE"
+        );
+
+      this.appendDummyInput()
+        .appendField("Name")
+        .appendField(new Blockly.FieldTextInput("fieldName"), "NAME");
+
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#f472b6");
+      this.setTooltip("HTML input element with selected type");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["form_input"] = function (block) {
+    const type = block.getFieldValue("TYPE");
+    const name = block.getFieldValue("NAME");
+    return `<input type="${type}" name="${name}">\n`;
+  };
+
+  Blockly.Blocks["th"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Table Header (th)")
+        .appendField(new Blockly.FieldTextInput("Header"), "TEXT");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Table header cell");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["tr"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Table Row (tr)");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Table row");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["td"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Table Data (td)")
+        .appendField(new Blockly.FieldTextInput("Data"), "TEXT");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Table data cell");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["caption"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Table Caption")
+        .appendField(new Blockly.FieldTextInput("Table Title"), "TEXT");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Caption for the table");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["colgroup"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Column Group (colgroup)");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Defines a group of columns");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["col"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Column (col)");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Defines column properties");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["thead"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Table Head (thead)");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Groups header content");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["tbody"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Table Body (tbody)");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Groups body content");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["tfoot"] = {
+    init: function () {
+      this.appendDummyInput().appendField("Table Foot (tfoot)");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#34d399");
+      this.setTooltip("Groups footer content");
+      this.setHelpUrl("");
+    },
+  };
+
+  // Define category colors
+  const categoryColors = {
+    "HTML": "#fa6860", // A shade of blue
+    "Text Formatting": "#f472b6", // A shade of pink
+    "Lists & Links": "#facc15", // A shade of yellow
+    "Media": "#6ee7b7", // A shade of green
+    "Tables": "#34d399", // A shade of teal
+    "Style": "#8b5cf6", // Main style category color (purple)
+    "Style > Selectors": "#10b981", // Darker green for Selectors
+    "Style > Text": "#6366f1", // Indigo for Text
+    "Style > Box Model": "#f87171", // Red for Box Model
+    "Style > Backgrounds": "#fbbf24", // Orange for Backgrounds
+    "Style > Layout": "#a78bfa", // Lighter purple for Layout
+    "Scripts": "#ef4444", // Red for Scripts
+    // Add more categories and their colors as needed
+  };
+
+  // ===== Style Blocks: Selectors =====
+  Blockly.Blocks["selector_id"] = {
+    init: function () {
+      this.appendDummyInput().appendField("#id");
+      this.setOutput(true, "String");
+      this.setColour(categoryColors["Style > Selectors"]);
+      this.setTooltip("ID selector.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["selector_class"] = {
+    init: function () {
+      this.appendDummyInput().appendField(".class");
+      this.setOutput(true, "String");
+      this.setColour("#34d399");
+      this.setTooltip("Class selector.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["selector_multiple"] = {
+    init: function () {
+      this.appendDummyInput().appendField("element, element");
+      this.setOutput(true, "String");
+      this.setColour("#34d399");
+      this.setTooltip("Multiple element selector.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["selector_all"] = {
+    init: function () {
+      this.appendDummyInput().appendField("*");
+      this.setOutput(true, "String");
+      this.setColour("#34d399");
+      this.setTooltip("Universal selector.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["selector_attribute"] = {
+    init: function () {
+      this.appendDummyInput().appendField("[attribute]");
+      this.setOutput(true, "String");
+      this.setColour("#34d399");
+      this.setTooltip("Attribute selector.");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["a_link"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("a:link style")
+        .appendField(new Blockly.FieldTextInput("color: blue;"), "STYLE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#10b981");
+      this.setTooltip("Style for a:link selector");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["a_visited"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("a:visited style")
+        .appendField(new Blockly.FieldTextInput("color: purple;"), "STYLE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#10b981");
+      this.setTooltip("Style for a:visited selector");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["a_hover"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("a:hover style")
+        .appendField(
+          new Blockly.FieldTextInput("text-decoration: underline;"),
+          "STYLE"
+        );
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#10b981");
+      this.setTooltip("Style for a:hover selector");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["a_active"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("a:active style")
+        .appendField(new Blockly.FieldTextInput("color: red;"), "STYLE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Selectors"]);
+      this.setTooltip("Style for a:active selector");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["font_properties"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Font Property")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["font-family", "font-family"],
+            ["font-size", "font-size"],
+            ["font-style", "font-style"],
+            ["font-weight", "font-weight"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField("Value")
+        .appendField(new Blockly.FieldTextInput(""), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Text"]);
+      this.setTooltip("Font-related CSS properties");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["text_appearance"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Text Appearance")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["color", "color"],
+            ["text-decoration", "text-decoration"],
+            ["text-decoration-line", "text-decoration-line"],
+            ["text-decoration-color", "text-decoration-color"],
+            ["text-decoration-style", "text-decoration-style"],
+            ["text-decoration-thickness", "text-decoration-thickness"],
+            ["text-transform", "text-transform"],
+            ["text-shadow", "text-shadow"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField("Value")
+        .appendField(new Blockly.FieldTextInput(""), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Text"]);
+      this.setTooltip("Appearance-related CSS properties");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["text_spacing"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Text Spacing")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["text-align", "text-align"],
+            ["text-align-last", "text-align-last"],
+            ["text-indent", "text-indent"],
+            ["letter-spacing", "letter-spacing"],
+            ["line-height", "line-height"],
+            ["word-spacing", "word-spacing"],
+            ["white-space", "white-space"],
+            ["direction", "direction"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField("Value")
+        .appendField(new Blockly.FieldTextInput(""), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Text"]);
+      this.setTooltip("Spacing-related CSS properties");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.JavaScript["font_properties"] = function (block) {
+    const prop = block.getFieldValue("PROPERTY");
+    const val = block.getFieldValue("VALUE");
+    return `${prop}: ${val};\n`;
+  };
+
+  Blockly.JavaScript["text_appearance"] = function (block) {
+    const prop = block.getFieldValue("PROPERTY");
+    const val = block.getFieldValue("VALUE");
+    return `${prop}: ${val};\n`;
+  };
+
+  Blockly.JavaScript["text_spacing"] = function (block) {
+    const prop = block.getFieldValue("PROPERTY");
+    const val = block.getFieldValue("VALUE");
+    return `${prop}: ${val};\n`;
+  };
+
+  Blockly.Blocks["box_dimensions"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Dimensions")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["height", "height"],
+            ["max-height", "max-height"],
+            ["max-width", "max-width"],
+            ["min-height", "min-height"],
+            ["min-width", "min-width"],
+            ["width", "width"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Box Model"]);
+      this.setTooltip("Set dimensions for an element");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["box_margin"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Margin (Outer Space)")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["margin-top", "margin-top"],
+            ["margin-right", "margin-right"],
+            ["margin-bottom", "margin-bottom"],
+            ["margin-left", "margin-left"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Box Model"]);
+      this.setTooltip("Set margin spacing");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["box_padding"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Padding (Inner Space)")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["padding-top", "padding-top"],
+            ["padding-right", "padding-right"],
+            ["padding-bottom", "padding-bottom"],
+            ["padding-left", "padding-left"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Box Model"]);
+      this.setTooltip("Set padding spacing");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["border_properties"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Borders")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["border-radius", "border-radius"],
+            ["border-style", "border-style"],
+            ["border-width", "border-width"],
+            ["border-color", "border-color"],
+            ["border-left-style", "border-left-style"],
+            ["border-right-style", "border-right-style"],
+            ["border-bottom-style", "border-bottom-style"],
+            ["border-top-style", "border-top-style"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Box Model"]);
+      this.setTooltip("Set border properties");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["outline_properties"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Outlines")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["outline-style", "outline-style"],
+            ["outline-color", "outline-color"],
+            ["outline-width", "outline-width"],
+            ["outline-offset", "outline-offset"],
+            ["outline", "outline"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Box Model"]);
+      this.setTooltip("Set outline properties");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["background_properties"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Background")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["background-color", "background-color"],
+            ["background-image", "background-image"],
+            ["background-repeat", "background-repeat"],
+            ["background-attachment", "background-attachment"],
+            ["background-position", "background-position"],
+            ["background (shorthand)", "background"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Backgrounds"]);
+      this.setTooltip("Set background properties");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["box_shadow"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Box Shadow")
+        .appendField(
+          new Blockly.FieldTextInput("e.g. 0px 4px 6px #000"),
+          "VALUE"
+        );
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Backgrounds"]);
+      this.setTooltip("Set box-shadow CSS property");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["opacity_property"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Opacity")
+        .appendField(new Blockly.FieldNumber(1, 0, 1, 0.1), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Backgrounds"]);
+      this.setTooltip("Set element opacity (0 to 1)");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["display_position"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Property")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["display", "display"],
+            ["position", "position"],
+          ]),
+          "PROPERTY"
+        )
+        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Layout"]);
+      this.setTooltip("Set display or position property");
+      this.setHelpUrl("");
+    },
+  };
+
+  Blockly.Blocks["position_values"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("Position value")
+        .appendField(
+          new Blockly.FieldDropdown([
+            ["static", "static"],
+            ["relative", "relative"],
+            ["fixed", "fixed"],
+            ["absolute", "absolute"],
+            ["sticky", "sticky"],
+          ]),
+          "VALUE"
+        );
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Style > Layout"]);
+      this.setTooltip("Select a position value");
+      this.setHelpUrl("");
+    },
+  };
+
+  // ===== Motion > Scripts Block =====
+  Blockly.Blocks["script_tag"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<script>");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(categoryColors["Scripts"]); // Scripts group color
+      this.setTooltip("JavaScript script tag.");
+      this.setHelpUrl("");
+    },
+  };
+  Blockly.defineBlocksWithJsonArray([
+    {
+      type: "on_click",
+      message0: "when element with ID %1 is clicked do %2 %3",
+      args0: [
+        { type: "field_input", name: "ID", text: "myElement" },
+        { type: "input_dummy" },
+        { type: "input_statement", name: "DO" },
+      ],
+      colour: categoryColors["Scripts"],
+      tooltip: "Triggered when the element is clicked",
+      previousStatement: null,
+      nextStatement: null,
+    },
+    {
+      type: "on_hover",
+      message0: "when mouse over element with ID %1 do %2 %3",
+      args0: [
+        { type: "field_input", name: "ID", text: "myElement" },
+        { type: "input_dummy" },
+        { type: "input_statement", name: "DO" },
+      ],
+      colour: categoryColors["Scripts"],
+      tooltip: "Triggered when the mouse hovers over the element",
+      previousStatement: null,
+      nextStatement: null,
+    },
+    {
+      type: "on_input",
+      message0: "when user types in input with ID %1 do %2 %3",
+      args0: [
+        { type: "field_input", name: "ID", text: "myInput" },
+        { type: "input_dummy" },
+        { type: "input_statement", name: "DO" },
+      ],
+      colour: categoryColors["Scripts"],
+      tooltip: "Triggered when the user types in the input field",
+      previousStatement: null,
+      nextStatement: null,
+    },
+    {
+      type: "on_load",
+      message0: "when page loads do %1 %2",
+      args0: [{ type: "input_dummy" }, { type: "input_statement", name: "DO" }],
+      colour: categoryColors["Scripts"],
+      tooltip: "Triggered when the page is fully loaded",
+      previousStatement: null,
+      nextStatement: null,
+    },
+    {
+      type: "on_key_press",
+      message0: "when key %1 is pressed do %2 %3",
+      args0: [
+        { type: "field_input", name: "KEY", text: "Enter" },
+        { type: "input_dummy" },
+        { type: "input_statement", name: "DO" },
+      ],
+      colour: categoryColors["Scripts"],
+      tooltip: "Triggered when a key is pressed",
+      previousStatement: null,
+      nextStatement: null,
+    },
+  ]);
+  Blockly.JavaScript["on_click"] = function (block) {
+    const id = block.getFieldValue("ID");
+    const statements = Blockly.JavaScript.statementToCode(block, "DO");
+    return `document.getElementById("${id}").addEventListener("click", function() {\n${statements}});\n`;
+  };
+
+  Blockly.JavaScript["on_hover"] = function (block) {
+    const id = block.getFieldValue("ID");
+    const statements = Blockly.JavaScript.statementToCode(block, "DO");
+    return `document.getElementById("${id}").addEventListener("mouseover", function() {\n${statements}});\n`;
+  };
+
+  Blockly.JavaScript["on_input"] = function (block) {
+    const id = block.getFieldValue("ID");
+    const statements = Blockly.JavaScript.statementToCode(block, "DO");
+    return `document.getElementById("${id}").addEventListener("input", function() {\n${statements}});\n`;
+  };
+
+  Blockly.JavaScript["on_load"] = function (block) {
+    const statements = Blockly.JavaScript.statementToCode(block, "DO");
+    return `window.addEventListener("load", function() {\n${statements}});\n`;
+  };
+
+  Blockly.JavaScript["on_key_press"] = function (block) {
+    const key = block.getFieldValue("KEY");
+    const statements = Blockly.JavaScript.statementToCode(block, "DO");
+    return `document.addEventListener("keydown", function(event) {
+  if (event.key === "${key}") {
+    ${statements}
+  }
+});\n`;
+  };
+
+    // --- BLOCKLY INJECTION ---
+
+    const workspace = Blockly.inject('blocklyDiv', {
+  toolbox: document.getElementById('toolbox'),
+  renderer: 'zelos',
+  theme: Blockly.Themes.Zelos,
+  trashcan: true,
+  scrollbars: true
+});
+// بعد ما تـ inject الـ workspace
+setTimeout(() => {
+  // اقفل أي كاتجوري مفتوحة
+  const toolbox = workspace.getToolbox();
+  toolbox.clearSelection(); 
+}, 0);
+
+const toolbox = workspace.getToolbox();
+const categories = toolbox.getToolboxItems();
+
+
+// ✅ قفل كل حاجة
+categories.forEach(cat => {
+  if (typeof cat.setExpanded === "function") {
+    cat.setExpanded(false);
+  }
+});
+
+// ✅ افتح أول كاتيجوري مش Style
+const firstNonStyle = categories.find(cat => cat.getName() !== "Style");
+if (firstNonStyle && typeof firstNonStyle.setExpanded === "function") {
+  firstNonStyle.setExpanded(true);
+}
+
+
+    // Add colored circles to categories after Blockly loads
+    // Remove the duplicated setTimeout and simplify the circle creation logic
+    setTimeout(() => {
+      const toolboxDiv = document.querySelector('.blocklyToolboxDiv');
+
+      // Helper: compute category depth
+      function computeDepth(row) {
+        let depth = 1;
+        let p = row.closest('.blocklyToolboxCategory');
+        while (p) {
+          p = p.parentElement?.closest?.('.blocklyToolboxCategory') || null;
+          if (p) depth++;
+        }
+        return depth;
+      }
+
+      // Apply indentation for circles and labels
+ function applyIndentation() {
+  document.querySelectorAll('.blocklyToolboxDiv .blocklyTreeRow').forEach(row => {
+    const depth = computeDepth(row);
+    const indent = Math.max(0, (depth - 1) * 20);
+
+    row.style.paddingLeft = indent + 'px';
+
+    const circle = row.querySelector('.scratch-circle');
+    const label  = row.querySelector('.blocklyTreeLabel');
+
+    if (circle) circle.style.marginLeft = '0px';
+    if (label)  label.style.marginLeft  = '6px';
+  });
+}
+
+
+
+      // Collapse all categories by default and hide the flyout
+ function collapseAllCategories() {
+  const toolbox = Blockly.getMainWorkspace().getToolbox();
+  const stack = [...toolbox.getToolboxItems()];
+  while (stack.length) {
+    const item = stack.pop();
+    if (item?.setExpanded) {
+      // ✅ قفل Style وكل الـ subcategories بتاعته
+      if (item.getName && item.getName() === "Style") {
+        item.setExpanded(false);
+      } else {
+        item.setExpanded(false);
+      }
+    }
+    if (item?.getChildToolboxItems) {
+      stack.push(...item.getChildToolboxItems());
+    }
+  }
+  Blockly.getMainWorkspace().hideChaff();
+}
+
+      // Observe toolbox for changes and re-apply indentation
+      const obs = new MutationObserver(() => applyIndentation());
+      if (toolboxDiv) {
+        obs.observe(toolboxDiv, { childList: true, subtree: true });
+      }
+
+      // Initial run
+    
+      // Function to show blocks for a specific category: accepts index or name
+      window.showBlocksForCategory = function (key) {
+        const workspace = Blockly.getMainWorkspace();
+        const toolbox = workspace.getToolbox();
+        if (typeof key === 'number') {
+          toolbox.selectItemByPosition(key, 0);
+          return;
+        }
+        const items = toolbox.getToolboxItems();
+        const idx = items.findIndex(i => i?.getName && i.getName() === String(key));
+        if (idx > -1) toolbox.selectItemByPosition(idx, 0);
+      };
+
+      // Control spacing between circle and label and apply specific colors
+      document.querySelectorAll('.blocklyTreeRow').forEach((row) => {
+        // Remove any existing circles
+        const existingCircle = row.querySelector('.scratch-circle');
+        if (existingCircle) {
+          existingCircle.remove();
+        }
+
+        const categoryName = row.querySelector('.blocklyTreeLabel').textContent;
+        const color = categoryColors[categoryName] || '#58d1e4ff'; // Default color if not found
+
+        // Create the circle element with exact spacing from your example
+        const circle = document.createElement('div');
+        circle.className = 'scratch-circle';
+        circle.style.cssText = `
+          width: 1.3rem;
+          height: 1.3rem;
+          background: ${color};
+          border-radius: 50%;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.1s ease;
+          position: relative;
+          margin: 8px auto;
+          z-index: 2;
+        `;
+
+        // Add hover effect
+        circle.addEventListener('mouseenter', () => {
+          circle.style.filter = 'brightness(1.1)';
+          circle.style.transform = 'translateY(-2px)';
+        });
+
+        circle.addEventListener('mouseleave', () => {
+          circle.style.filter = 'none';
+          circle.style.transform = 'none';
+        });
+
+        // Insert the circle at the beginning of the row
+        row.insertBefore(circle, row.firstChild);
+
+        // Update the row to handle selection
+        row.addEventListener('click', () => {
+          // Remove selection from all rows
+          document.querySelectorAll('.blocklyTreeRow').forEach(r => {
+            r.setAttribute('aria-selected', 'false');
+            const c = r.querySelector('.scratch-circle');
+            if (c) c.style.boxShadow = 'none';
+          });
+          
+          // Add selection to clicked row
+          row.setAttribute('aria-selected', 'true');
+          circle.style.boxShadow = '0 0 0 2px rgba(0,0,0,0.15)';
+
+          // Show blocks for this category using its name
+          showBlocksForCategory(categoryName);
+        });
+
+        // Also make the circle clickable
+        circle.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent double triggering
+          
+          // Remove selection from all rows
+          document.querySelectorAll('.blocklyTreeRow').forEach(r => {
+            r.setAttribute('aria-selected', 'false');
+            const c = r.querySelector('.scratch-circle');
+            if (c) c.style.boxShadow = 'none';
+          });
+          
+          // Add selection to clicked row
+          row.setAttribute('aria-selected', 'true');
+          circle.style.boxShadow = '0 0 0 2px rgba(0,0,0,0.15)';
+
+          // Show blocks for this category using its name
+          showBlocksForCategory(categoryName);
+        });
+
+        // Make the entire category div clickable
+        const categoryDiv = row.closest('.blocklyToolboxCategory');
+        if (categoryDiv) {
+          categoryDiv.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent double triggering
+            
+            // Remove selection from all rows
+            document.querySelectorAll('.blocklyTreeRow').forEach(r => {
+              r.setAttribute('aria-selected', 'false');
+              const c = r.querySelector('.scratch-circle');
+              if (c) c.style.boxShadow = 'none';
+            });
+            
+            // Add selection to clicked row
+            row.setAttribute('aria-selected', 'true');
+            circle.style.boxShadow = '0 0 0 2px rgba(0,0,0,0.15)';
+
+            // Show blocks for this category using its name
+            showBlocksForCategory(categoryName);
+          });
+        }
+      });
+    }, 300);
+    // Remove the old showBlocksForCategory function, it's now part of the setTimeout callback
+    // function showBlocksForCategory(index) {
+    //   const workspace = Blockly.getMainWorkspace();
+    //   const toolbox = workspace.getToolbox();
+    //   toolbox.selectItemByPosition(index, 0);
+    // }
+
+    // Hide flyout when clicking outside
+    document.addEventListener('click', (e) => {
+      // Check if click is outside the toolbox and flyout
+      const toolbox = document.querySelector('.blocklyToolboxDiv');
+      const flyout = document.querySelector('.blocklyFlyout');
+      
+      if (!toolbox.contains(e.target) && !flyout?.contains(e.target)) {
+        // Hide the flyout
+        const workspace = Blockly.getMainWorkspace();
+        workspace.hideChaff();
+        
+        // Remove selection from all rows
+        document.querySelectorAll('.blocklyTreeRow').forEach(r => {
+          r.setAttribute('aria-selected', 'false');
+          const c = r.querySelector('.scratch-circle');
+          if (c) c.style.boxShadow = 'none';
+        });
+      }
+      
+    });
+  });
+  
