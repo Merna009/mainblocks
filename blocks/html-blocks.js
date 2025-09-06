@@ -3,43 +3,41 @@ import { categoryColors } from '../config/colors.js';
 // HTML Basic blocks
 export function defineHtmlBlocks() {
   // <!DOCTYPE html>
-Blockly.Blocks["doctype"] = {
-  init: function () {
-    this.appendDummyInput().appendField("<!DOCTYPE html>");
-    this.setPreviousStatement(false, null); 
-    this.setNextStatement(true, "html");
-    this.setColour(categoryColors["HTML"]);
-    this.setTooltip("HTML doctype declaration.");
-    this.setHelpUrl("");
-  },
-};
+  Blockly.Blocks["doctype"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<!DOCTYPE html>");
+      this.setPreviousStatement(false, null);
+      this.setNextStatement(true, "html");
+      this.setColour(categoryColors["HTML"]);
+      this.setTooltip("HTML doctype declaration.");
+      this.setHelpUrl("");
+    },
+  };
 
-// <html> ... </html>
-Blockly.Blocks["html_tag"] = {
-  init: function () {
-    this.appendDummyInput().appendField("<html>");
-    this.appendStatementInput("CONTENT")
-      .setCheck(["head_tag", "body_tag"]); 
-    this.appendDummyInput().appendField("</html>");
-    this.setPreviousStatement(true, "html");
-    this.setNextStatement(false, null);     
-    this.setColour(categoryColors["HTML"]);
-    this.setTooltip("HTML root element.");
-    this.setHelpUrl("");
-  },
-};
-
+  // <html> ... </html>
+  Blockly.Blocks["html_tag"] = {
+    init: function () {
+      this.appendDummyInput().appendField("<html>");
+      this.appendStatementInput("CONTENT")
+        .setCheck(["head_tag", "body_tag"]); 
+      this.appendDummyInput().appendField("</html>");
+      this.setPreviousStatement(true, "html");
+      this.setNextStatement(false, null);
+      this.setColour(categoryColors["HTML"]);
+      this.setTooltip("HTML root element.");
+      this.setHelpUrl("");
+    },
+  };
 
   // <head> ... </head>
   Blockly.Blocks["head_tag"] = {
     init: function () {
       this.appendDummyInput().appendField("<head>");
       this.appendStatementInput("CONTENT")
-        .setCheck("metadata") 
-        .appendField("content");
+        .setCheck("metadata"); 
       this.appendDummyInput().appendField("</head>");
-      this.setPreviousStatement(true, "head_tag"); 
-      this.setNextStatement(true, "body_tag");     
+      this.setPreviousStatement(true, "head_tag");
+      this.setNextStatement(true, "body_tag");
       this.setColour(categoryColors["HTML"]);
       this.setTooltip("Head section of the document.");
       this.setHelpUrl("");
@@ -66,8 +64,7 @@ Blockly.Blocks["html_tag"] = {
     init: function () {
       this.appendDummyInput().appendField("<body>");
       this.appendStatementInput("CONTENT")
-        .setCheck("content") 
-        .appendField("content");
+        .setCheck("content"); 
       this.appendDummyInput().appendField("</body>");
       this.setPreviousStatement(true, "body_tag");
       this.setNextStatement(false, null);
